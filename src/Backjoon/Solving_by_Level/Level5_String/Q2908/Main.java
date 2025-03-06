@@ -9,9 +9,7 @@ public class Main {
         int A = Integer.parseInt(new StringBuilder(input[0]).reverse().toString());
         int B = Integer.parseInt(new StringBuilder(input[1]).reverse().toString());
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringBuilder sb = new StringBuilder();
-        sb.append(Math.max(A, B));
-        bw.write(sb.toString());
+        bw.write(String.valueOf(Math.max(A, B)));
         bw.flush();
         br.close();
         bw.close();

@@ -11,13 +11,7 @@ public class Main {
     long A = Long.parseLong(st.nextToken());
     long B = Long.parseLong(st.nextToken());
 
-    long min = Math.min(A, B);
-    long max = 1;
-    for (long i = 1; i <= min; i++) {
-      if (A % i == 0 && B % i == 0) {
-        max = i;
-      }
-    }
+    long max = getMax(Math.max(A, B), Math.min(A,B));
 
     long result = A / max * B;
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -26,5 +20,15 @@ public class Main {
 
     br.close();
     bw.close();
+  }
+
+  public static long getMax(long a, long b) {
+    long tmp;
+    while (b > 0) {
+      tmp = a % b;
+      a = b;
+      b = tmp;
+    }
+    return a;
   }
 }

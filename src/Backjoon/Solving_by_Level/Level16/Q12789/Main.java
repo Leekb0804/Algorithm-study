@@ -10,29 +10,32 @@ public class Main {
 
     StringTokenizer st = new StringTokenizer(br.readLine());
 
-    Deque<Integer> stack = new ArrayDeque<>();
+    Deque<Integer> inputQueue = new ArrayDeque<>();
+    Deque<Integer> tmp_stack = new ArrayDeque<>();
 
-    int resultTop = 0;
-    boolean check = true;
     for(int i = 0; i < N; i++) {
       int num = Integer.parseInt(st.nextToken());
-      if (resultTop + 1 == num) {
-        resultTop = num;
-      } else if (!(stack.isEmpty()) && stack.peekFirst() == resultTop + 1) {
-        resultTop = stack.pollFirst();
-      } else {
-        if ( !(stack.isEmpty()) && stack.peekFirst() < num ) {
-          System.out.println("resultTop = " + resultTop + ", num = " + num + ", stack.peekFirst() = " + stack.peekFirst());
+      inputQueue.offerLast(num);
+    }
 
-          check = false;
+    int result = 0;
+    while (result < N) {
+      if (!(inputQueue.isEmpty()) && result + 1 == inputQueue.peekFirst()) {
+        result = inputQueue.pollFirst();
+      } else if (!(tmp_stack.isEmpty()) && result + 1 == tmp_stack.peekFirst()) {
+        result = tmp_stack.pollFirst();
+      } else {
+        if (inputQueue.isEmpty()) {
           break;
         }
-        stack.offerFirst(num);
+        int tmp = inputQueue.pollFirst();
+        tmp_stack.offerFirst(tmp);
       }
     }
 
+
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-    if (check) {
+    if (result == N) {
       bw.write("Nice");
     } else {
       bw.write("Sad");

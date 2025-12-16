@@ -1,4 +1,4 @@
-package Backjoon.Solving_by_Level.Level22.Q10986;
+package Backjoon.Solving_by_Level.Level22.Q2559;
 
 import java.io.*;
 import java.util.*;

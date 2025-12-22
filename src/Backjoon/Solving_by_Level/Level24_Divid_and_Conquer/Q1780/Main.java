@@ -1,4 +1,4 @@
-package Backjoon.Solving_by_Level.Level24_Divid_and_Conquer.Level1780;
+package Backjoon.Solving_by_Level.Level24_Divid_and_Conquer.Q1780;
 
 import java.io.*;
 import java.util.*;
